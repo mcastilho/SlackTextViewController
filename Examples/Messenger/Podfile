@@ -1,5 +1,0 @@
-platform :ios, "7.0"
-
-pod 'SlackTextViewController', :path => '../../SlackTextViewController.podspec'
-
-pod 'LoremIpsum', '~> 1.0'

@@ -19,10 +19,6 @@
 /** @name UIView additional features used for SlackTextViewController. */
 @interface UIView (SLKAdditions)
 
-// Convenience methods for CGRect calculation
-CGRect adjustEndFrame(CGRect endFrame, UIInterfaceOrientation orientation);
-BOOL isValidKeyboardFrame(CGRect frame);
-
 /**
  Animates the view's constraints by calling layoutIfNeeded.
  
@@ -30,7 +26,7 @@ BOOL isValidKeyboardFrame(CGRect frame);
  @param options A mask of options indicating how you want to perform the animations.
  @param animations An additional block for custom animations.
  */
-- (void)animateLayoutIfNeededWithBounce:(BOOL)bounce options:(UIViewAnimationOptions)options animations:(void (^)(void))animations;
+- (void)slk_animateLayoutIfNeededWithBounce:(BOOL)bounce options:(UIViewAnimationOptions)options animations:(void (^)(void))animations;
 
 /**
  Animates the view's constraints by calling layoutIfNeeded.
@@ -40,7 +36,7 @@ BOOL isValidKeyboardFrame(CGRect frame);
  @param options A mask of options indicating how you want to perform the animations.
  @param animations An additional block for custom animations.
  */
-- (void)animateLayoutIfNeededWithDuration:(NSTimeInterval)duration bounce:(BOOL)bounce options:(UIViewAnimationOptions)options animations:(void (^)(void))animations;
+- (void)slk_animateLayoutIfNeededWithDuration:(NSTimeInterval)duration bounce:(BOOL)bounce options:(UIViewAnimationOptions)options animations:(void (^)(void))animations;
 
 /**
  Returns the view constraints matching a specific layout attribute (top, bottom, left, right, leading, trailing, etc.)
@@ -48,6 +44,16 @@ BOOL isValidKeyboardFrame(CGRect frame);
  @param attribute The layout attribute to use for searching.
  @return An array of matching constraints.
  */
-- (NSArray *)constraintsForAttribute:(NSLayoutAttribute)attribute;
+- (NSArray *)slk_constraintsForAttribute:(NSLayoutAttribute)attribute;
+
+/**
+ Returns a layout constraint matching a specific layout attribute and relationship between 2 items, first and second items.
+ 
+ @param attribute The layout attribute to use for searching.
+ @param first The first item in the relationship.
+ @param second The second item in the relationship.
+ @return A layout constraint.
+ */
+- (NSLayoutConstraint *)slk_constraintForAttribute:(NSLayoutAttribute)attribute firstItem:(id)first secondItem:(id)second;
 
 @end
